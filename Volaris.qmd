@@ -57,3 +57,51 @@ ggplot(students, aes(x=group))+
   geom_bar()
 ```
 
+### Question 6
+
+```{r}
+grades |>
+  filter(course=="Martial Arts and Self-Defense") |>
+  group_by(group) |>
+  summarize(mean_maasd = mean(grade))
+```
+
+### Question 7
+
+```{r}
+ggplot(grades, aes(x=grade))+
+  geom_density()+
+  facet_wrap(vars(semester))
+```
+
+## Attendance analysis
+
+### Question 8
+
+```{r}
+student_grades_count <- grades |>
+  group_by(id, group) |>
+  summarize(num_grades = n(), .groups = "drop")
+head(student_grades_count)
+```
+
+```{r}
+student_grades_count |>
+  summarise(min = min(num_grades),
+            max = max(num_grades),
+            avg = mean(num_grades),
+            med = median(num_grades))
+```
+
+### Question 9
+
+```{r}
+historyindia_grades <- grades |>
+  filter(course == "History and Civilization of India") |>
+  group_by(id, group) |>
+  summarize(num_grades = n(), .groups = "drop")
+head(historyindia_grades)
+```
+
+### Question 10
+
