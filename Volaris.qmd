@@ -13,7 +13,7 @@ library(tidyr)
 library(dplyr)
 ```
 
-## Question 1
+### Question 1
 
 ```{r}
 here::i_am("eval-grades.Rproj")
@@ -22,8 +22,31 @@ library(vroom)
 grades <- vroom("grades.csv")
 ```
 
-# Simple analyses
+## Simple analyses
 
-## Question 2
+### Question 2
+
+```{r}
+nrow(grades)
+```
 
 The dataset contains 49422 grades.
+
+### Question 3
+
+```{r}
+grades |>
+  distinct(id) |>
+  nrow()
+```
+The dataset includes 784 distinct students.
+
+### Question 4
+
+```{r}
+students <- grades |>
+  distinct(id, .keep_all = TRUE) |>
+  select(id, group)
+students |> slice_tail(n=5)
+```
+
