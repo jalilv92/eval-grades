@@ -105,3 +105,22 @@ head(historyindia_grades)
 
 ### Question 10
 
+```{r}
+ggplot(historyindia_grades, aes(x=num_grades))+
+  geom_bar()
+```
+
+### Question 11
+
+```{r}
+ggplot(historyindia_grades, aes(x=num_grades))+
+  geom_bar()+
+  facet_wrap(vars(group))
+```
+It seems that all groups has roughly the same distribution.
+
+## Grade analysis
+
+### Question 12
+
+
