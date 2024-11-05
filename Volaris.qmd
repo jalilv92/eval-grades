@@ -123,4 +123,62 @@ It seems that all groups has roughly the same distribution.
 
 ### Question 12
 
+```{r}
+students <- grades |>
+  group_by(id, course, group) |>
+  summarise(mean = mean(grade))
+students
+```
+
+```{r}
+students_wider <- students |>
+  pivot_wider(names_from=course,
+              values_from=mean)
+head(students_wider)
+```
+### Question 13
+
+```{r}
+ggplot(students_wider, aes(x=`Sanskrit Language and Literature`, y=`Vedic Philosophy and Spirituality`))+
+  geom_point(alpha=0.5)
+```
+
+### Question 14
+
+```{r}
+students_wider |>
+  group_by(group) |>
+summarize(correlation = cor(`Sanskrit Language and Literature`, `Astrology and Astrology`, use = "complete.obs"))
+```
+
+### Question 15
+
+```{r}
+ggplot(students_wider, aes(x=`Astrology and Astrology`, y=`Sanskrit Language and Literature`))+
+  geom_point()+
+  facet_wrap(vars(group=1|2))
+```
+
+### Question 16
+
+```{r}
+final_average <- students_wider |>
+  group_by(id, group) |>
+  summarise(final_grade=mean(`Architecture and Sculpture`:`Yoga and Meditation`))|>
+  arrange(-final_grade)
+head(final_average)
+```
+### Question 17
+
+```{r}
+ggplot(final_average, aes(x=final_grade))+
+  geom_density()+
+  facet_wrap(vars(group))
+```
+
+### Question 18
+
+### Question 19
+
+### Question 20
 
