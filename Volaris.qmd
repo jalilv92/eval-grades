@@ -50,3 +50,10 @@ students <- grades |>
 students |> slice_tail(n=5)
 ```
 
+### Question 5
+
+```{r}
+ggplot(students, aes(x=group))+
+  geom_bar()
+```
+
