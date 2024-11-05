@@ -5,3 +5,25 @@ format: html
 editor: visual
 ---
 
+## Libraries
+
+```{r}
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+```
+
+## Question 1
+
+```{r}
+here::i_am("eval-grades.Rproj")
+library(here)
+library(vroom)
+grades <- vroom("grades.csv")
+```
+
+# Simple analyses
+
+## Question 2
+
+The dataset contains 49422 grades.
